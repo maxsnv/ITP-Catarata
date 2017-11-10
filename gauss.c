@@ -17,7 +17,7 @@ Imagem *Gauss(Imagem *Foto)
  Gauss->height = Foto->height;
  Gauss->width = Foto->width;
  Gauss->max = Foto->max;
-// ESTA NOS FOR O PROBLEMA
+	
   for (i = 0; i < Foto->height; ++i)
  {
 
@@ -40,7 +40,7 @@ Imagem *Gauss(Imagem *Foto)
 		g_aux = aux/div;
 		aux = 0;
 		div = 0;
-		// PROBLEMA NO FOR
+		
 		Gauss->p[i][j].r = g_aux;
 		Gauss->p[i][j].g = g_aux;
 		Gauss->p[i][j].b = g_aux;
