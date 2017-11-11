@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
   img = Gauss(&Aux);
 
   wimg(file, img);
+  fimg (img);
 
  fclose(file);
 

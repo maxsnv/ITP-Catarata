@@ -23,4 +23,5 @@ Imagem rimg(char * name); //Função de leitura
 void Grey(Imagem *Foto); //Função para transformar em tons de cinza
 Imagem *Gauss(Imagem *Foto); //Função para o filtro de gauss
 void wimg(FILE  *file, Imagem *img);//Função de escrita 
+void fimg (Imagem *read);
 #endif
