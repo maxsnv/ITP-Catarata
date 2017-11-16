@@ -12,7 +12,7 @@
 #endif
  //Define a struct das cores, com 3 inteiros unsigned
 typedef struct{
-	unsigned int r,g,b;
+	unsigned char r,g,b;
 }Pixel;
 //Define a struct para os pixels
 typedef struct {
