@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
   Grey(&Aux);
   Imagem *img;
   img = Gauss(&Aux);
-
+  img = Sobel(&Aux);
   wimg(file, img);
-  fimg (img);
+   fimg (img);
 
  fclose(file);
 

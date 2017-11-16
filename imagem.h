@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
+#include <float.h>
 #endif
  //Define a struct das cores, com 3 inteiros unsigned
 typedef struct{
@@ -22,6 +24,7 @@ typedef struct {
 Imagem rimg(char * name); //Função de leitura
 void Grey(Imagem *Foto); //Função para transformar em tons de cinza
 Imagem *Gauss(Imagem *Foto); //Função para o filtro de gauss
-void wimg(FILE  *file, Imagem *img);//Função de escrita 
+Imagem *Sobel (Imagem *Foto);
+void wimg(FILE  *file, Imagem *img);//Função de escrita
 void fimg (Imagem *read);
 #endif
