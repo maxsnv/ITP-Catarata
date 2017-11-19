@@ -13,3 +13,17 @@ void wimg(FILE *file, Imagem *img)
         }
     }
 }
+void wpbm(FILE *file, Imagem *img)
+{
+    int i, j;
+//Imprime no arquivo o cabeçalho: header, largura, altura e pxl max
+    fprintf(file,"%s\n%d %d\n","P1",img->width,img->height);
+//Imprime no arquivo os pixels
+    for (i = 0; i < img->height; ++i)
+    {
+        for (j = 0; j < img->width; ++j)
+        {
+            fprintf(file,"%d\n",img->p[i][j].r);
+        }
+    }
+}

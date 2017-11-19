@@ -1,10 +1,11 @@
 #include "imagem.h"
 //Recebe o arquivo de entrada
-Imagem rimg(char * name)
+Imagem *rimg(char * name)
 {
 
     int i = 0, j = 0;
-    Imagem read;
+    Imagem *read;
+    read = malloc(sizeof *read); 
     char dump[100];
 
     FILE *file;
@@ -18,9 +19,9 @@ Imagem rimg(char * name)
 
     else
     {
-        fscanf(file,"%s",read.header);
+        fscanf(file,"%s",read->header);
 //Verifica se o header é o P3 (ASCII)
-        if(strcmp(read.header, "P3"))
+        if(strcmp(read->header, "P3"))
         {
         printf("Header incorreto");
         }
@@ -31,20 +32,20 @@ Imagem rimg(char * name)
             fgets(dump,sizeof dump-1,file);
             fgets(dump,sizeof dump-1,file);
 //Faz leitura da altura, largura e máximo de cores por pixel
-            fscanf(file, "%d %d %d\n", &read.width, &read.height, &read.max);
+            fscanf(file, "%d %d %d\n", &read->width, &read->height, &read->max);
 //Aloca dinamicamente a memória necessária para os ponteiros da struct de cores
-            read.p = malloc(read.height * sizeof (Pixel*));
+            read->p = malloc(read->height * sizeof (Pixel*));
 //Aloca a memória para todos os pixels
-            for (i = 0; i < read.height; ++i)
+            for (i = 0; i < read->height; ++i)
             {
-                read.p[i] = malloc(read.width * sizeof (Pixel));
+                read->p[i] = malloc(read->width * sizeof (Pixel));
             }
 //Efetua a leitura das cores dos pixels e armazena na variável
-            for (i = 0; i < read.height; ++i)
+            for (i = 0; i < read->height; ++i)
             {
-                for (j = 0; j < read.width; ++j)
+                for (j = 0; j < read->width; ++j)
                 {
-                    fscanf(file, "%d%d%d",&(read.p[i][j]).r, &(read.p[i][j]).g,&(read.p[i][j]).b);
+                    fscanf(file, "%d%d%d",&(read->p[i][j]).r, &(read->p[i][j]).g,&(read->p[i][j]).b);
                 }
             }
 //Desaloca memória e fecha o arquivo aberto

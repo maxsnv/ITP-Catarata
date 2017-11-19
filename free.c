@@ -7,4 +7,5 @@ void fimg (Imagem *read)
         free(read->p[i]);
     }
         free (read->p);
+	free(read); 
 }
