@@ -30,6 +30,6 @@ Imagem *Sobel (Imagem *Foto);
 int Otsu(int data[]); // Func de threshold por histogram
 void wimg(FILE  *file, Imagem *img);//Função de escrita
 void wpbm(FILE *file,Imagem *img); // Escrita em pbm 
-int **HTransform(Imagem *img); 
+unsigned int **HTransform(Imagem *img); 
 void fimg (Imagem *read);
 #endif
