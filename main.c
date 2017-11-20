@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
   printf("Começando a transformada\n"); 
   HTransform(img); 
    fimg (img);
-   fimg(aux);
  fclose(file);
    
 	return 0;
