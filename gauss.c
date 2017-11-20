@@ -49,7 +49,7 @@ Imagem *gauss_filter(Imagem *Foto,unsigned int repeats)
 
  	}
  }
-  
+ fimg(Foto);
  if(repeats == 0) 
  return Gauss;
  else if (repeats > 0) 
