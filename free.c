@@ -10,7 +10,7 @@ void fimg (Imagem *read)
 	free(read); 
 }
 
-void fACCU (ushort ***accu,int h,int w)
+void fACCU (int ***accu,int h,int w)
 {
 
   int i,j;

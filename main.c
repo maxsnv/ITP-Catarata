@@ -24,23 +24,15 @@ int main(int argc, char *argv[])
   printf("Começando a transformada\n"); 
   Circle *Hough = HTransform(img); 
    fimg (img); 
- /* printf("Imprimindo gambiarra");
-
-  file = fopen("Gambiarra.txt","w");
-  
-   fprintf(file,"%d %d %d",Hough->b,Hough->a,Hough->r); 
- 
-   fclose(file);
-  */  
    
    Eye *Olho = malloc(sizeof *Olho);
-   printf("Filling eye"); 
+   printf("Filling eye\n"); 
    Eye_fill(Olho,Hough);
-   printf("Eye Filled"); 
+   printf("Eye Filled\n"); 
    Imagem *img4 = rimg(argv[1]);
-   printf("Reddening Eye"); 
+   printf("Reddening Eye\n"); 
    red_fill(Olho,img4);
-   printf("Image Complete, proceeding to write"); 
+   printf("Image Complete, proceeding to write\n"); 
 
    file = fopen(argv[2],"w");
   

@@ -45,13 +45,13 @@ void binarization(Imagem *img,unsigned int th)
         }
     }       
 }
-ushort ***CreateAcumulator(int height,int width, int radius)
+int ***CreateAcumulator(int height,int width, int radius)
 {
-	ushort ***Accu = (ushort ***) calloc(height, sizeof(ushort **));
+	int ***Accu = (int ***) calloc(height, sizeof(int **));
 	for (int i = 0; i < height; ++i) {
-		Accu[i] = (ushort **) calloc(width, sizeof(ushort *));
-		for (ushort j = 0; j < width; j++){
-			Accu[i][j] = (ushort *) calloc(radius, sizeof(ushort));
+		Accu[i] = (int **) calloc(width, sizeof(int *));
+		for (int j = 0; j < width; j++){
+			Accu[i][j] = (int *) calloc(radius, sizeof(int));
 		}
 	}
 	return Accu;

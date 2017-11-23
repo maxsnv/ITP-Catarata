@@ -8,7 +8,7 @@ Circle *HTransform(Imagem *img)
  int mvalue[3],max[3];
  int rmax = sqrt(img->height*img->height+img->width*img->width)/4.0;
  int rmin = 80, accu_r = rmax-rmin+1, rfor = 0;
- ushort ***accu = CreateAcumulator(img->height,img->width,accu_r);
+ int ***accu = CreateAcumulator(img->height,img->width,accu_r);
 // unsigned int *accu = malloc(w*h*accu_r); 
  mvalue[0] = 0;
  Circle *Circulo = malloc(sizeof *Circulo); 

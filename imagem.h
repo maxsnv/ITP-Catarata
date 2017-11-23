@@ -62,9 +62,9 @@ void wpbm(FILE *file,Imagem *img); // Escrita em pbm
 
 Circle *HTransform(Imagem *img); 
 
-ushort ***CreateAcumulator(int height,int width, int radius);
+int ***CreateAcumulator(int height,int width, int radius);
 
 void fimg (Imagem *read);
 
-void fACCU (ushort ***accu,int h,int w); // free acumulator
+void fACCU (int ***accu,int h,int w); // free acumulator
 #endif
