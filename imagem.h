@@ -60,7 +60,7 @@ void wimg(FILE  *file, Imagem *img);//Função de escrita
 
 void wpbm(FILE *file,Imagem *img); // Escrita em pbm 
 
-Circle *HTransform(Imagem *img); 
+Circle **HTransform(Imagem *img); 
 
 unsigned int ***CreateAcumulator(int height,int width, int radius);
 

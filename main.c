@@ -22,16 +22,19 @@ int main(int argc, char *argv[])
   binarization(img,th);
  // wpbm(file, img);
   printf("Começando a transformada\n"); 
-  Circle *Hough = HTransform(img); 
+  Circle **Hough = HTransform(img); 
    fimg (img); 
    
-   Eye *Olho = malloc(sizeof *Olho);
+   Eye *Olho = calloc(1,sizeof *Olho);
+// Eye *Olho2 = calloc(1,sizeof *Olho2);
    printf("Filling eye\n"); 
-   Eye_fill(Olho,Hough);
+   Eye_fill(Olho,Hough[0]);
+//   Eye_fill(Olho2,Hough[1]);
    printf("Eye Filled\n"); 
    Imagem *img4 = rimg(argv[1]);
    printf("Reddening Eye\n"); 
    red_fill(Olho,img4);
+//   red_fill(Olho2,img4);
    printf("Image Complete, proceeding to write\n"); 
 
    file = fopen(argv[2],"w");
