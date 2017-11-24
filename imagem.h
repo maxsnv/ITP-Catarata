@@ -29,8 +29,8 @@ typedef struct{
   int a,b,r;
 }Circle;
 typedef struct{
-  ushort x[360] ;
-  ushort y[360] ;
+  ushort x[361] ;
+  ushort y[361] ;
 }Eye;
 
 void AccumCircle(Circle *Circulo,int a,int b, int r);
@@ -62,9 +62,9 @@ void wpbm(FILE *file,Imagem *img); // Escrita em pbm
 
 Circle *HTransform(Imagem *img); 
 
-int ***CreateAcumulator(int height,int width, int radius);
+unsigned int ***CreateAcumulator(int height,int width, int radius);
 
 void fimg (Imagem *read);
 
-void fACCU (int ***accu,int h,int w); // free acumulator
+void fACCU (unsigned int ***accu,int h,int w); // free acumulator
 #endif

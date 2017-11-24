@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
    file = fopen(argv[2],"w");
   
    wimg(file,img4); 
-   
+   free(Olho);
    fclose(file); 
 	return 0;
 }

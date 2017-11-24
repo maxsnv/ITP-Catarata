@@ -45,13 +45,13 @@ void binarization(Imagem *img,unsigned int th)
         }
     }       
 }
-int ***CreateAcumulator(int height,int width, int radius)
+unsigned int ***CreateAcumulator(int height,int width, int radius)
 {
-	int ***Accu = (int ***) calloc(height, sizeof(int **));
+	unsigned int***Accu = (unsigned int***) calloc(height+1, sizeof(unsigned int**));
 	for (int i = 0; i < height; ++i) {
-		Accu[i] = (int **) calloc(width, sizeof(int *));
+		Accu[i] = (unsigned int**) calloc(width+1, sizeof(unsigned int*));
 		for (int j = 0; j < width; j++){
-			Accu[i][j] = (int *) calloc(radius, sizeof(int));
+			Accu[i][j] = (unsigned int*) calloc(radius+1, sizeof(unsigned int));
 		}
 	}
 	return Accu;
@@ -59,14 +59,14 @@ int ***CreateAcumulator(int height,int width, int radius)
 
 void AccumCircle(Circle *Circulo,int a,int b, int r)
 {
- Circulo->a = a;
- Circulo->b = b;
- Circulo->r = r;
+ Circulo->a = (int) a;
+ Circulo->b = (int) b;
+ Circulo->r = (int) r;
 }
 
 void Eye_fill(Eye *Olho,Circle *Circulo)  
 {
-  for (int i = 0; i < 360; ++i) 
+  for (int i = 0; i <=360; ++i) 
   {
    Olho->x[i]  = Circulo->a + Circulo->r * cos(i * M_PI/180);
    Olho->y[i]  = Circulo->b + Circulo->r * sin(i * M_PI/180);  
@@ -74,16 +74,19 @@ void Eye_fill(Eye *Olho,Circle *Circulo)
 }
 void red_fill(Eye *Olho,Imagem *img)
 {
-  for (int i = 0; i < 360; ++i) 
+  for (int i = 0; i <=360; ++i) 
   {
+   if((Olho->y[i] >= 0 && Olho->y[i] < img->height) && (Olho->x[i] >= 0 && Olho->x[i] < img->width)) 
+   {
    img->p[Olho->y[i]][Olho->x[i]].r = 255;   	
    img->p[Olho->y[i]][Olho->x[i]].g = 10;   	
    img->p[Olho->y[i]][Olho->x[i]].b = 10;   	
+   }
   }
 }
 double *preCalcSin()
 {
-	double *Sin = malloc(360 * sizeof(double));
+	double *Sin = malloc(361 * sizeof(double));
 	for (int i = 0; i <= 360; ++i) 
 	{
 	 Sin[i] = sin(i*M_PI/180) ; 
@@ -92,7 +95,7 @@ double *preCalcSin()
 }
 double *preCalcCos()
 {
-	double *Cos = malloc(360 * sizeof(double));
+	double *Cos = malloc(361 * sizeof(double));
 	for (int i = 0; i <= 360; ++i) 
 	{
 	 Cos[i] = cos(i*M_PI/180) ; 
