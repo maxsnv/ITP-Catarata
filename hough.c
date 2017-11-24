@@ -5,13 +5,10 @@ Circle **HTransform(Imagem *img)
  int i,j,k,x,y,t,a,b,count = 0;
  int w = img->width, h = img->height;
  int th = 360;
- int mvalue[3],max[3][3];
- for (int i = 0; i < 3; ++i) 
- {
- 	mvalue[i] = 0;
-	max[0][i] = 0;
-	max[1][i] = 0;
- }
+ int mvalue[10],max[10][3];
+ 	mvalue[0] = 0;
+	max[0][0] = 0;
+ 
  int rmax = sqrt(img->height*img->height+img->width*img->width)/4.0;
  int rmin = 80, accu_r = rmax-rmin+1, rfor = 0;
 //unsigned int ***accu = CreateAcumulator(img->height,img->width,accu_r);
@@ -56,7 +53,7 @@ Circle **HTransform(Imagem *img)
                ARR(b,a,rfor-rmin)+= 1; 
 		if(mvalue[0] < ARR(b,a,rfor-rmin)/* accu[b][a][rfor-rmin]*/)
 		{
-		 if(count < 10)
+		 if(count != 10)
 		  count++;		 
 		    
 		  	if(max[0][2] != rfor)
