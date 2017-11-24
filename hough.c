@@ -2,7 +2,7 @@
 #define ARR(i,j,k) accu[i*w*accu_r+j*accu_r+k]  
 Circle **HTransform(Imagem *img)
 { 
- int i,j,k,x,y,t,a,b;
+ int i,j,k,x,y,t,a,b,count = 0;
  int w = img->width, h = img->height;
  int th = 360;
  int mvalue[3],max[3][3];
@@ -56,13 +56,20 @@ Circle **HTransform(Imagem *img)
                ARR(b,a,rfor-rmin)+= 1; 
 		if(mvalue[0] < ARR(b,a,rfor-rmin)/* accu[b][a][rfor-rmin]*/)
 		{
-		 if(max[0][2] != rfor)
-		 {
-		  mvalue[1] = mvalue[0];
-		  max[1][0] = max[0][0];
-		  max[1][1] = max[0][1];
-		  max[1][2] = max[0][2];
-		 }
+		 if(count < 10)
+		  count++;		 
+		    
+		  	if(max[0][2] != rfor)
+		 	{
+			  for(i = count; i > 0; ++i){
+
+		  	  mvalue[i] = mvalue[i-1];
+		  	  max[i][0] = max[i-1][0];
+		  	  max[i][1] = max[i-1][1];
+		  	  max[i][2] = max[i-1][2];
+			  }	  
+		 	}
+		 	 
 		 mvalue[0] = ARR(b,a,rfor-rmin) /*accu[b][a][rfor-rmin]*/;
 		 max[0][0] = a;
 		 max[0][1] = b;
