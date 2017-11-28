@@ -1,7 +1,5 @@
 hough.o: hough.c
 	gcc -c hough.c -lm
-fimg.o: free.c
-	gcc -c -ggdb free.c -o fimg.o
 wimg.o: wimg.c
 	gcc -c -ggdb wimg.c
 gauss.o: gauss.c
@@ -13,7 +11,7 @@ grey.o: grey.c
 sobel.o: sobel.c
 	gcc -c -ggdb sobel.c -o sobel.o
 
-main: read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o
-	gcc main.c read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o -o proj -lm -ggdb
+main: read.o grey.o gauss.o sobel.o wimg.o hough.o
+	gcc main.c read.o grey.o gauss.o sobel.o wimg.o hough.o -o proj -lm -ggdb
 clean:
-	rm proj read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o
+	rm proj read.o grey.o gauss.o sobel.o wimg.o hough.o

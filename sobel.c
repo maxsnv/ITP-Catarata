@@ -4,7 +4,6 @@ Imagem *Sobel (Imagem *Foto)
 {
 	int x, y, i, j,th;
 	// th = Otsu(Foto->histogram)-100; 
-	double max = -DBL_MAX;
 	Imagem *Sobel;
 	Sobel = malloc (sizeof *Sobel);
 	Sobel->p = malloc (Foto->height*sizeof (Pixel*));

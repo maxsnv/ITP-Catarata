@@ -10,25 +10,13 @@ Circle **HTransform(Imagem *img)
 	max[0][0] = 0;
  
  int rmax = sqrt(img->height*img->height+img->width*img->width)/4.0;
- int rmin = 80, accu_r = rmax-rmin+1, rfor = 0;
-//unsigned int ***accu = CreateAcumulator(img->height,img->width,accu_r);
+ int rmin = 70, accu_r = rmax-rmin+1, rfor = 0;
  unsigned int *accu = calloc(w*h*accu_r,sizeof(unsigned int)); 
  mvalue[0] = 0;
- Circle *Circulo = calloc(1,sizeof *Circulo);
-// Circle *Circulo2 = calloc(1,sizeof *Circulo);
- Circle **Vec = calloc(2,sizeof(Circle*));
+ Circle **Vec = AllocateCircles(10);
  printf("%d %d",w,w/5); 
  memset(accu,0,h*w*accu_r); 
-/* for (i = 0; i < img->height; ++i) 
- {
-  for (j = 0; j < img->width; ++j) 
-  {
-   for (k = 0; k < accu_r; ++k) 
-   {
-   	accu[i][j][k] = 0;
-   }	
-  }	
- } */
+ 
  double *sin = preCalcSin();
  double *cos = preCalcCos();  
  printf("Acumulador Inicializado com sucesso\n");
@@ -39,26 +27,25 @@ Circle **HTransform(Imagem *img)
 //	printf("Testando valores inteiros do ponteiro img->p[%d][%d]: %d\n",y,x,img->p[y][x].r);
      if(img->p[y][x].r == 0)
       {
-      for (rfor = rmin; rfor <= rmax; rfor = rfor +10){
-     	for (t = 0; t <= th; t = t+10){
+      for (rfor = rmin; rfor <= rmax; rfor = rfor +5){
+     	for (t = 0; t <= th; t = t+15){
      
    	  a = x - rfor * cos[t] ;
      	  b = y - rfor *sin[t] ;	
           
 	   if((a >= 0 && a < img->height) && (b >= 0 && b < img->height))
     	    { 
-  	     // accu[b][a][rfor-rmin] += 1;
-	     // if(accu [b][a][rfor] == 65532   ) 
-	//	      printf("Overflow Incoming\n"); 
                ARR(b,a,rfor-rmin)+= 1; 
 		if(mvalue[0] < ARR(b,a,rfor-rmin)/* accu[b][a][rfor-rmin]*/)
 		{
-		 if(count != 10)
+		 if(a < w/4 || b < 100)
+			 continue;
+		 if(count != 9)
 		  count++;		 
-		    
+		       if(count > 1);
 		  	if(max[0][2] != rfor)
 		 	{
-			  for(i = count; i > 0; ++i){
+			  for(i = count; i > 0; --i){
 
 		  	  mvalue[i] = mvalue[i-1];
 		  	  max[i][0] = max[i-1][0];
@@ -80,15 +67,13 @@ Circle **HTransform(Imagem *img)
       }
    }
  }
-// fACCU(accu,img->height,img->width);
  printf("\n%d\n",mvalue[0]);
- printf("   %d\n",mvalue[1]);
- printf("%d %d %d\n",max[0][0],max[0][1],max[0][2]); 
- printf("%d %d %d\n",max[1][0],max[1][1],max[1][2]); 
- AccumCircle(Circulo,max[0][0],max[0][1],max[0][2]);
-// AccumCircle(Circulo2,max[1][0],max[1][1],max[1][2]);
- Vec[0] = Circulo;
-// Vec[1] = Circulo2;
+// printf("   %d\n",mvalue[1]);
+  for (int i = 0; i <10; ++i) 
+  {
+  printf("%d %d %d\n",max[i][0],max[i][1],max[i][2]); 
+  } 
+ AccumCircle(Vec[0],max[0][0],max[0][1],max[0][2]);
  free(accu); 
  printf("Fim da transformada\n");
  return Vec; 

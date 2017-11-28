@@ -12,7 +12,7 @@
 #endif
 
 #define ushort unsigned short
-
+#define uchar unsigned char
 //Define a struct das cores, com 3 inteiros unsigned
 typedef struct{
 	unsigned char r,g,b;
@@ -43,8 +43,12 @@ double *preCalcCos();
 
 double *preCalcSin(); 
 
-Imagem *rimg(char * name); //Função de leitura
+char *stripFilepath(char *filepath);
 
+char *outFilepath(char *folder, char *filename, char *toCat, char *format);
+
+Imagem *rimg(char * name); //Função de leitura
+Imagem *rpbm(char * name);
 void Grey(Imagem *Foto); //Função para transformar em tons de cinza
 
 Imagem *gauss_filter(Imagem *Foto,unsigned int repeats); //Função para o filtro de gauss
@@ -61,6 +65,14 @@ void wimg(FILE  *file, Imagem *img);//Função de escrita
 void wpbm(FILE *file,Imagem *img); // Escrita em pbm 
 
 Circle **HTransform(Imagem *img); 
+
+Circle **AllocateCircles(int amount);
+
+Eye **AllocateEye(int amount);
+
+int *Limits(Eye *Olho);
+
+void StripImage(Imagem *img,int *xy);
 
 unsigned int ***CreateAcumulator(int height,int width, int radius);
 
