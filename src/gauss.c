@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 
 Imagem *gauss_filter(Imagem *Foto,unsigned int repeats) 
 {

@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 
 Imagem *Sobel (Imagem *Foto)
 {

@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 void wimg(FILE *file, Imagem *img)
 {
     int i, j;

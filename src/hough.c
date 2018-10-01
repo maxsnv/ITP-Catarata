@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 #define rad(A)  (M_PI*((double)(A))/180.0) 
 unsigned int **HTransform(Imagem *img) 
 {
