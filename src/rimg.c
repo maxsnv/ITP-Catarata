@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 //Recebe o arquivo de entrada
 Imagem *rimg(char * name)
 {

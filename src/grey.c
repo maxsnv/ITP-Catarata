@@ -1,4 +1,4 @@
-#include "imagem.h"
+#include "../inc/imagem.h"
 
 void Grey(Imagem *Foto)
 {
