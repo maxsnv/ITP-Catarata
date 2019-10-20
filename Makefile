@@ -1,26 +1,25 @@
-OBJDIR = ./obj
-SRCDIR = ./src
-INCDIR = ./inc
-BINDIR = ./bin
+BLDDIR = build
+SRCDIR = src
+INCDIR = inc
+BINDIR = bin
 
-all: main
+COMPLR = gcc
+SRCEXT = c
+SOURCES = $(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)")
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BLDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS = -ggdb
+TARGET = $(BINDIR)/main
 
-hough.o: $(SRCDIR)/hough.c
-	gcc -c $(SRCDIR)/hough.c -lm
-fimg.o: $(SRCDIR)/free.c
-	gcc -c -ggdb $(SRCDIR)/free.c -o fimg.o
-wimg.o: $(SRCDIR)/wimg.c
-	gcc -c -ggdb $(SRCDIR)/wimg.c
-gauss.o: $(SRCDIR)/gauss.c
-	gcc -c -ggdb $(SRCDIR)/gauss.c -o gauss.o
-read.o: $(SRCDIR)/rimg.c
-	gcc -c -ggdb $(SRCDIR)/rimg.c -o read.o
-grey.o: $(SRCDIR)/grey.c
-	gcc -c -ggdb $(SRCDIR)/grey.c
-sobel.o: $(SRCDIR)/sobel.c
-	gcc -c -ggdb $(SRCDIR)/sobel.c -o sobel.o
+all: init $(TARGET)
 
-main: read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o
-	gcc $(SRCDIR)/main.c read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o -o proj -lm -ggdb
+init:
+	mkdir -p $(BINDIR) $(BLDDIR)
+
+$(TARGET): $(OBJECTS)
+	$(COMPLR) $^ -o $@ -lm $(CFLAGS)
+
+$(BLDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	$(COMPLR) -c -o $@ $< -lm $(CFLAGS)
+
 clean:
-	rm proj read.o grey.o gauss.o sobel.o wimg.o fimg.o hough.o
+	rm -r $(BLDDIR)
